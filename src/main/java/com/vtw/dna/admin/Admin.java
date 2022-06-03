@@ -11,12 +11,12 @@ import java.util.Date;
 
 @Entity
 @Getter
-public class Admin {
+public class Admin { //관리자
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    private String password;
+    private String userId; // id
+    private String password; // pw
 
     public Admin update(Admin newOne) {
         this.password = newOne.password;

@@ -16,11 +16,14 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    private String nickname;
     private Gender gender;
     private Date birthDate;
 
     public Employee update(Employee newOne) {
         this.name = newOne.name;
+        this.nickname = newOne.nickname;
         this.gender = newOne.gender;
         this.birthDate = newOne.birthDate;
         return this;

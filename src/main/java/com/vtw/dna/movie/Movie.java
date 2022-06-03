@@ -9,17 +9,17 @@ import javax.persistence.Id;
 
 @Entity
 @Getter
-public class Movie {
+public class Movie { // 영화
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String movieId;
-    private String director;
-    private String title;
-    private String cast;
-    private String grade;
-    private String information;
-    private String runningTime;
+    private String movieId; // 영화id
+    private String director; // 감독
+    private String title; // 영화명
+    private String cast; // 출연진
+    private String grade; // 관람등급
+    private String information; // 영화설명
+    private String runningTime; // 상영시간
 
 
 

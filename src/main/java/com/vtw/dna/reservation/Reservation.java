@@ -10,18 +10,18 @@ import java.util.Date;
 
 @Entity
 @Getter
-public class Reservation {
+public class Reservation { // 영화 예약
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reservationSeq;
-    private String roomId;
-    private String userId;
-    private String seat;
+    private int reservationSeq; // 예약 Seq
+    private String scheduleSeq; // 상영관 Id
+    private String userId; // 예약자 Id
+    private String seat; // 예약 매수
 
 
     public Reservation update(Reservation newOne) {
-        this.roomId = newOne.roomId;
+        this.scheduleSeq = newOne.scheduleSeq;
         this.userId = newOne.userId;
         this.seat = newOne.seat;
         return this;
