@@ -1,6 +1,7 @@
 package com.vtw.dna.movie.controller;
 
 import com.vtw.dna.customer.Customer;
+import com.vtw.dna.employee.Employee;
 import com.vtw.dna.movie.Movie;
 import com.vtw.dna.movie.repository.MovieRepository;
 import lombok.AllArgsConstructor;
@@ -19,40 +20,41 @@ public class MovieController {
 
     private final MovieRepository repository;
 
-/*    @GetMapping
-    public Page<Movie> list(@RequestParam("page") int page,
-                            @RequestParam("size") int size,
-                            @RequestParam(value = "sortBy", defaultValue = "userId") String sortBy,
-                            @RequestParam(value = "sortDir", defaultValue = "asc") String sortDir,
-                            @RequestParam(value = "filter", defaultValue = "") String filter) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortBy));
-        Page<Movie> movie = repository.findAllByNameContains(pageable, filter);
-        return movie;
-    }*/
+   @GetMapping
+   public Page<Movie> list(@RequestParam("page") int page,
+                           @RequestParam("size") int size,
+                           @RequestParam(value = "sortBy", defaultValue = "movieId") String sortBy,
+                           @RequestParam(value = "sortDir", defaultValue = "asc") String sortDir,
+                           @RequestParam(value = "filter", defaultValue = "") String filter) {
+       Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortBy));
+       Page<Movie> movie = repository.findAllByTitleContains(pageable, filter);
+       System.out.println(movie.toString()+"$$$$$$$");
+       return movie;
+   }
 
-    @GetMapping("/{userId}")
-    public Movie find(@PathVariable String movieId) {
+    @GetMapping("/{movieId}")
+    public Movie find(@PathVariable Long movieId) {
         Movie movie = repository.findById(movieId).orElseThrow();
         return movie;
     }
 
     @PostMapping
     public Movie create(@RequestBody Movie newOne) {
-       /* repository.save(newOne);*/
+        repository.save(newOne);
         System.out.println(newOne.toString());
         return newOne;
     }
 
-    @PutMapping("/{userId}")
-    public Movie update(@PathVariable String movieId, @RequestBody Movie newOne) {
+    @PutMapping("/{movieId}")
+    public Movie update(@PathVariable Long movieId, @RequestBody Movie newOne) {
         Movie oldOne = repository.findById(movieId).orElseThrow();
         oldOne.update(newOne);
         repository.save(oldOne);
         return oldOne;
     }
 
-    @DeleteMapping("/{userId}")
-    public Movie update(@PathVariable String movieId) {
+    @DeleteMapping("/{movieId}")
+    public Movie delete(@PathVariable Long movieId) {
         Movie oldOne = repository.findById(movieId).orElseThrow();
         repository.delete(oldOne);
         return oldOne;

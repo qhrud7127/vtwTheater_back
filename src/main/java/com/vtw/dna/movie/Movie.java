@@ -13,13 +13,15 @@ public class Movie { // 영화
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String movieId; // 영화id
+    private Long movieId; // 영화id
     private String director; // 감독
     private String title; // 영화명
     private String cast; // 출연진
     private String grade; // 관람등급
     private String information; // 영화설명
     private String runningTime; // 상영시간
+
+    private String poster; // 포스터
 
 
 
@@ -30,6 +32,7 @@ public class Movie { // 영화
         this.grade = newOne.grade;
         this.information = newOne.information;
         this.runningTime = newOne.runningTime;
+        this.poster = newOne.poster;
         return this;
     }
 }
