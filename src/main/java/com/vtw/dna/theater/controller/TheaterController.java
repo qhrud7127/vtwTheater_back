@@ -5,7 +5,11 @@ import com.vtw.dna.theater.Theater;
 import com.vtw.dna.theater.repository.TheaterRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @Slf4j
 @RestController
@@ -15,40 +19,40 @@ public class TheaterController {
 
     private final TheaterRepository repository;
 
-/*    @GetMapping
-    public Page<Movie> list(@RequestParam("page") int page,
+    @GetMapping
+    public Page<Theater> list(@RequestParam("page") int page,
                             @RequestParam("size") int size,
-                            @RequestParam(value = "sortBy", defaultValue = "userId") String sortBy,
+                            @RequestParam(value = "sortBy", defaultValue = "theaterId") String sortBy,
                             @RequestParam(value = "sortDir", defaultValue = "asc") String sortDir,
                             @RequestParam(value = "filter", defaultValue = "") String filter) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortBy));
-        Page<Movie> movie = repository.findAllByNameContains(pageable, filter);
-        return movie;
-    }*/
+        Page<Theater> theater = repository.findAllByTheaterNmContains(pageable, filter);
+        return theater;
+    }
 
-    @GetMapping("/{userId}")
-    public Theater find(@PathVariable String theaterId) {
+    @GetMapping("/{theaterId}")
+    public Theater find(@PathVariable Long theaterId) {
         Theater movie = repository.findById(theaterId).orElseThrow();
         return movie;
     }
 
     @PostMapping
     public Theater create(@RequestBody Theater newOne) {
-       /* repository.save(newOne);*/
+        repository.save(newOne);
         System.out.println(newOne.toString());
         return newOne;
     }
 
-    @PutMapping("/{userId}")
-    public Theater update(@PathVariable String theaterId, @RequestBody Theater newOne) {
+    @PutMapping("/{theaterId}")
+    public Theater update(@PathVariable Long theaterId, @RequestBody Theater newOne) {
         Theater oldOne = repository.findById(theaterId).orElseThrow();
         oldOne.update(newOne);
         repository.save(oldOne);
         return oldOne;
     }
 
-    @DeleteMapping("/{userId}")
-    public Theater update(@PathVariable String theaterId) {
+    @DeleteMapping("/{theaterId}")
+    public Theater update(@PathVariable Long theaterId) {
         Theater oldOne = repository.findById(theaterId).orElseThrow();
         repository.delete(oldOne);
         return oldOne;

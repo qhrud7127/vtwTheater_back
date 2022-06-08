@@ -20,7 +20,6 @@ public class Movie { // 영화
     private String grade; // 관람등급
     private String information; // 영화설명
     private String runningTime; // 상영시간
-
     private String poster; // 포스터
 
 

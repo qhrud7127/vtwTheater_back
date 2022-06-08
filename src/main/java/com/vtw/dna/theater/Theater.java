@@ -15,7 +15,7 @@ public class Theater { // 극장
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String theaterId; // 극장 id
+    private long theaterId; // 극장 id
     private String theaterNm; // 극장 명
     private String address; // 극장 위치
 
