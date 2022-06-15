@@ -1,6 +1,5 @@
 package com.vtw.dna.theater.controller;
 
-import com.vtw.dna.reservation.Reservation;
 import com.vtw.dna.theater.Theater;
 import com.vtw.dna.theater.repository.TheaterRepository;
 import lombok.AllArgsConstructor;
@@ -10,6 +9,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -27,6 +28,12 @@ public class TheaterController {
                             @RequestParam(value = "filter", defaultValue = "") String filter) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortBy));
         Page<Theater> theater = repository.findAllByTheaterNmContains(pageable, filter);
+        return theater;
+    }
+
+    @GetMapping("/seqList")
+    public List<Theater> listSeqAndName() {
+        List<Theater> theater = repository.findAll();
         return theater;
     }
 

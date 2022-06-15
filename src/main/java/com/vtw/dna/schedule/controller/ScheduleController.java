@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @AllArgsConstructor
@@ -32,6 +34,19 @@ public class ScheduleController {
         System.out.println("Schedule:"+schedule.getContent());
         return schedule;
     }
+
+    @GetMapping("/movieId/{movieId}")
+    public List<Schedule> listSeqAndNameByMovieId(@PathVariable Long movieId) {
+        List<Schedule> schedule = repository.findAllByMovieId(movieId);
+        return schedule;
+    }
+
+    @GetMapping("/seqList")
+    public List<Schedule> listSeqAndName() {
+        List<Schedule> schedule = repository.findAll();
+        return schedule;
+    }
+
 
     @GetMapping("/{scheduleSeq}")
     public Schedule find(@PathVariable Long scheduleSeq) {

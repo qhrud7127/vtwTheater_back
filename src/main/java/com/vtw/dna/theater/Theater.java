@@ -1,7 +1,7 @@
 package com.vtw.dna.theater;
 
-import com.vtw.dna.employee.Gender;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +11,7 @@ import java.util.Date;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Theater { // 극장
 
     @Id
@@ -18,6 +19,12 @@ public class Theater { // 극장
     private long theaterId; // 극장 id
     private String theaterNm; // 극장 명
     private String address; // 극장 위치
+
+    public Theater(String theaterNm, String address) {
+        this.theaterNm = theaterNm;
+        this.address = address;
+    }
+
 
     public Theater update(Theater newOne) {
         this.theaterNm = newOne.theaterNm;
