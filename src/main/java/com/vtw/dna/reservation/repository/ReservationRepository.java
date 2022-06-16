@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ReservationRepository extends JpaRepository<Reservation, Long>{
 
 
-    Page<Reservation> findAllByNameContains(Pageable pageable, String searchName);
+    Page<Reservation> findAllByPhoneContains(Pageable pageable, String searchName);
 
 
 }

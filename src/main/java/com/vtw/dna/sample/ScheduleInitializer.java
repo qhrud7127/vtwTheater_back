@@ -35,7 +35,6 @@ public class ScheduleInitializer implements SampleDataInitializer {
 
         create(schedule1_1);
 
-        System.out.println(schedule1_1.toString());
 
     }
 

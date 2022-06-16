@@ -38,7 +38,6 @@ public class CustomerController {
     @PostMapping
     public Customer create(@RequestBody Customer newOne) {
        /* repository.save(newOne);*/
-        System.out.println(newOne.toString());
         return newOne;
     }
 

@@ -30,8 +30,7 @@ public class ScheduleController {
                             @RequestParam(value = "sortDir", defaultValue = "asc") String sortDir,
                             @RequestParam(value = "filter", defaultValue = "") String filter) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortBy));
-        Page<Schedule> schedule = repository.findAll(pageable);
-        System.out.println("Schedule:"+schedule.getContent());
+        Page<Schedule> schedule = repository.findAllByTheaterTheaterNmContains(pageable,filter);
         return schedule;
     }
 
@@ -56,7 +55,6 @@ public class ScheduleController {
 
     @PostMapping
     public Schedule create(@RequestBody Schedule newOne) {
-        System.out.println("Schedule:"+newOne.getTime()+"###:"+newOne.getScheduleSeq()+"@@@:"+newOne.getFee());
         repository.save(newOne);
         return newOne;
     }

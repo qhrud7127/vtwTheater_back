@@ -30,7 +30,6 @@ public class MovieController {
                            @RequestParam(value = "filter", defaultValue = "") String filter) {
        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortBy));
        Page<Movie> movie = repository.findAllByTitleContains(pageable, filter);
-       System.out.println(movie+"$$$$$$$");
        return movie;
    }
     @GetMapping("/seqList")
@@ -48,7 +47,6 @@ public class MovieController {
     @PostMapping
     public Movie create(@RequestBody Movie newOne) {
         repository.save(newOne);
-        System.out.println(newOne.getPoster());
         return newOne;
     }
 

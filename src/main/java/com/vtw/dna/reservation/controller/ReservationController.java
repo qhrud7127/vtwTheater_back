@@ -33,7 +33,7 @@ public class ReservationController {
                                   @RequestParam(value = "sortDir", defaultValue = "asc") String sortDir,
                                   @RequestParam(value = "filter", defaultValue = "") String filter) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortBy));
-        Page<Reservation> reservation = repository.findAllByNameContains(pageable, filter);
+        Page<Reservation> reservation = repository.findAllByPhoneContains(pageable, filter);
         return reservation;
     }
     @GetMapping("/seqList")
