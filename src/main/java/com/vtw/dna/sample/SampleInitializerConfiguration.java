@@ -11,12 +11,14 @@ import javax.annotation.PostConstruct;
 public class SampleInitializerConfiguration {
 
     @Autowired private MovieInitializer movieInitializer;
+    @Autowired private DevExtremeInitializer devExtremeInitializer;
    // @Autowired private ScheduleInitializer scheduleInitializer;
     @Autowired private TheaterInitializer theaterInitializer;
 
     @PostConstruct
     public void init() {
         movieInitializer.generateData();
+        devExtremeInitializer.generateData();
   //      scheduleInitializer.generateData();
         theaterInitializer.generateData();
     }
