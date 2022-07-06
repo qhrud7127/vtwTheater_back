@@ -1,12 +1,9 @@
 package com.vtw.dna.schedule.controller;
 
-import com.vtw.dna.movie.Movie;
-import com.vtw.dna.reservation.Reservation;
 import com.vtw.dna.schedule.Schedule;
 import com.vtw.dna.schedule.repository.ScheduleRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

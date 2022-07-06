@@ -1,7 +1,5 @@
 package com.vtw.dna.movie.controller;
 
-import com.vtw.dna.customer.Customer;
-import com.vtw.dna.employee.Employee;
 import com.vtw.dna.movie.Movie;
 import com.vtw.dna.movie.repository.MovieRepository;
 import lombok.AllArgsConstructor;
@@ -29,8 +27,8 @@ public class MovieController {
                            @RequestParam(value = "sortDir", defaultValue = "asc") String sortDir,
                            @RequestParam(value = "filter", defaultValue = "") String filter) {
        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortBy));
-       Page<Movie> movie = repository.findAllByTitleContains(pageable, filter);
-       return movie;
+       Page<Movie> movies = repository.findAllByTitleContains(pageable, filter);
+       return movies;
    }
     @GetMapping("/seqList")
     public List<Movie> listSeqAndName() {

@@ -1,6 +1,5 @@
 package com.vtw.dna.reservation;
 
-import com.vtw.dna.movie.Movie;
 import com.vtw.dna.schedule.Schedule;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,6 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Getter
