@@ -1,12 +1,10 @@
 package com.vtw.dna.movie;
 
-import com.vtw.dna.schedule.Schedule;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 @Getter
@@ -14,8 +12,7 @@ import java.util.List;
 public class Movie { // 영화
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long movieId; // 영화id
+    private String id; // 영화id
     private String title; // 영화명
     private String director; // 감독
     private String genre; // 장르
@@ -28,7 +25,8 @@ public class Movie { // 영화
     private List<Schedule> schedules = new ArrayList<>();
 */
 
-    public Movie(String title, String director, String grade, String genre, String actor, String runningTime) {
+    public Movie(String id, String title, String director, String grade, String genre, String actor, String runningTime) {
+        this.id = id;
         this.title = title;
         this.director = director;
         this.genre = genre;
@@ -39,6 +37,7 @@ public class Movie { // 영화
 
 
     public Movie update(Movie newOne) {
+        this.id = newOne.id;
         this.title = newOne.title;
         this.director = newOne.director;
         this.genre = newOne.genre;

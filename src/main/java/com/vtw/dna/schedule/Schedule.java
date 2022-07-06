@@ -4,8 +4,6 @@ import com.vtw.dna.movie.Movie;
 import com.vtw.dna.theater.Theater;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,7 +17,7 @@ public class Schedule { // 영화 상영관
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long scheduleSeq; // 상영관 Id
     private long theaterId; // 영화관 Id
-    private long movieId; // 영화 Id
+    private String id; // 영화 Id
     private LocalDateTime time; // 영화 시간
     private long seats; // 좌석 수
     private long remaining; // 남은 좌석 수
@@ -32,7 +30,7 @@ public class Schedule { // 영화 상영관
     private Movie movie;
 
 
-    public Schedule(Theater theater, Movie movie, LocalDateTime time, long seats, long fee){
+    public Schedule(Theater theater, Movie movie, LocalDateTime time, long seats, long fee) {
         this.theater = theater;
         this.movie = movie;
         this.time = time;
@@ -43,7 +41,7 @@ public class Schedule { // 영화 상영관
 
     public Schedule update(Schedule newOne) {
         this.theaterId = newOne.theaterId;
-        this.movieId = newOne.movieId;
+        this.id = newOne.id;
         this.time = newOne.time;
         this.seats = newOne.seats;
         this.fee = newOne.fee;
@@ -53,7 +51,7 @@ public class Schedule { // 영화 상영관
     public Schedule updateSeats(Schedule newOne, long number) {
         this.scheduleSeq = newOne.scheduleSeq;
         this.theaterId = newOne.theaterId;
-        this.movieId = newOne.movieId;
+        this.id = newOne.id;
         this.time = newOne.time;
         this.seats = newOne.seats;
         this.fee = newOne.fee;
