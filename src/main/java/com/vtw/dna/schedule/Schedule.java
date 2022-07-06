@@ -25,14 +25,10 @@ public class Schedule { // 영화 상영관
     private long remaining; // 남은 좌석 수
     private long fee; // 금액
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "theaterId", referencedColumnName = "theaterId", nullable = false, insertable = false, updatable = false)
-    @NotFound(action = NotFoundAction.IGNORE)
+    @ManyToOne
     private Theater theater;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "movieId", referencedColumnName = "movieId", nullable = false, insertable = false, updatable = false)
-    @NotFound(action = NotFoundAction.IGNORE)
+    @ManyToOne
     private Movie movie;
 
 

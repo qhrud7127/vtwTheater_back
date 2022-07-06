@@ -23,9 +23,7 @@ public class Reservation { // 영화 예약
     private String phone; //휴대폰번호
     private String birth; // 생년월일
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "scheduleSeq", referencedColumnName = "scheduleSeq", nullable = false, insertable = false, updatable = false)
-    @NotFound(action = NotFoundAction.IGNORE)
+    @ManyToOne
     private Schedule schedule;
 
 
